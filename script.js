@@ -15,6 +15,9 @@ let playerSelection;
 function playRound(playerSelection, computerSelection) {
 
     playerSelection = prompt("Rock, Paper or Scissors?", "Shoot!").toLocaleLowerCase();
+    while (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
+        playerSelection = prompt("Rock, Paper or Scissors?", "Shoot!").toLocaleLowerCase();
+    }
     computerSelection = getComputerChoice();
 
     console.log(`You Choose: ${playerSelection}`);
