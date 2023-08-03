@@ -23,47 +23,39 @@ function playRound(playerSelection, computerSelection) {
 
     if (computerSelection === "rock" && playerSelection === "paper") {
         playerScore = playerScore + 1;
-        console.log(`Player Score: ${playerScore} - Comp Score: ${compScore}`);
         return "You Win! Paper beats Rock";
     } else if (computerSelection === "paper" && playerSelection === "rock") {
         compScore = compScore + 1;
-        console.log(`Player Score: ${playerScore} - Comp Score: ${compScore}`);
         return "You Lose! Paper beats Rock";
     } else if (computerSelection === "scissors" && playerSelection === "rock") {
         playerScore = playerScore + 1;
-        console.log(`Player Score: ${playerScore} - Comp Score: ${compScore}`);
         return "You Win! Rock beats Scissors";
     } else if (computerSelection === "rock" && playerSelection === "scissors") {
         compScore = compScore + 1;
-        console.log(`Player Score: ${playerScore} - Comp Score: ${compScore}`);
         return "You Lose! Rock beats Scissors";
     } else if (computerSelection === "paper" && playerSelection === "scissors") {
         playerScore = playerScore + 1;
-        console.log(`Player Score: ${playerScore} - Comp Score: ${compScore}`);
         return "You Win! Scissors beats Paper";
     } else if (computerSelection === "scissors" && playerSelection === "paper") {
         compScore = compScore + 1;
-        console.log(`Player Score: ${playerScore} - Comp Score: ${compScore}`);
         return "You Lose! Scissors beats Paper";
     } else { return "Its a Tie!"; }
 
 
 }
 
-// if (compScore === 5) {
-//     console.log("You Lose!")
-// } else if (playerScore === 5) {
-//     console.log("You Win!")
-// }
-
 function game() {
 
-    for (let i = 0; i < 5; i++)
-    console.log(playRound(playerSelection, computerSelection));
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound(playerSelection, computerSelection));
+        console.log(`Player Score: ${playerScore} - Comp Score: ${compScore}`);
+    }
     if (compScore > playerScore) {
-        console.log("You Lose The Game")
-    } else { console.log("You Win The Game!")}
+        console.log("You Lose The Game");
+    } else if (compScore === playerScore) {
+        console.log("It's a Tie Game!");
+    } else { console.log("You Win The Game!"); }
+
 }
 
 console.log(game());
-// console.log(playRound(playerSelection, computerSelection));
