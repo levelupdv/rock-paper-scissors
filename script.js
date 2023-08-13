@@ -16,7 +16,7 @@ function playRound(playerSelection, computerSelection) {
 
     playerSelection = prompt("Rock, Paper or Scissors?", "Shoot!").toLocaleLowerCase();
     while (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
-        playerSelection = prompt("Rock, Paper or Scissors?", "Shoot!").toLocaleLowerCase();
+        playerSelection = prompt("Enter a valid option", "").toLocaleLowerCase();
     }
     computerSelection = getComputerChoice();
 
