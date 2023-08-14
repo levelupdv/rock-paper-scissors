@@ -20,18 +20,24 @@ let cScore = 0;
 
 rock.addEventListener('click', function(e) {
     playerChoice = e.target.innerText.toLowerCase();
-    gameStat();
+    playGame();
 });
 paper.addEventListener('click', function(e) {
     playerChoice = e.target.innerText.toLowerCase();
-    gameStat();
+    playGame();
 });
 scissors.addEventListener('click', function(e) {
     playerChoice = e.target.innerText.toLowerCase();
-    gameStat();
+    playGame();
 });
 
-function gameStat () {
+function playGame () {
+    if (pScore !== winningScore && cScore !== winningScore) {
+        playRound();
+    }
+}
+
+function gameState() {
     if (pScore === winningScore) {
         winMsg.innerText = "CONGRATULATIONS!!! You Win The Game!";
         winMsg.classList.add('has-text-success');
@@ -46,32 +52,38 @@ function gameStat () {
         plScore.classList.add('has-text-danger');
         btns.forEach((btn) => btn.disabled = true);
         return;
-    } else if (pScore !== winningScore && cScore !== winningScore) {
-        playRound();
     }
 }
 
 function playRound() {
     compChoice = tools[Math.floor(Math.random() * 3)];
      if (compChoice === "rock" && playerChoice === "paper") {
-        pScore += 1;
+        pScore++
         msg.innerText = "You Win! Paper beats Rock";
+        gameState();
     } else if (compChoice === "paper" && playerChoice === "rock") {
-        cScore += 1;
+        cScore++
         msg.innerText = "You Lose! Paper beats Rock";
+        gameState();
     } else if (compChoice === "scissors" && playerChoice === "rock") {
-        pScore += 1;
+        pScore++
         msg.innerText = "You Win! Rock beats Scissors";
+        gameState();
     } else if (compChoice === "rock" && playerChoice === "scissors") {
-        cScore += 1;
+        cScore++
         msg.innerText = "You Lose! Rock beats Scissors";
+        gameState();
     } else if (compChoice === "paper" && playerChoice === "scissors") {
-        pScore += 1;
+        pScore++
         msg.innerText = "You Win! Scissors beats Paper";
+        gameState();
     } else if (compChoice === "scissors" && playerChoice === "paper") {
-        cScore += 1;
+        cScore++
         msg.innerText = "You Lose! Scissors beats Paper";
-    } else { msg.innerText = "Its a Tie!"; }
+        gameState();
+    } else { msg.innerText = "Its a Tie!";
+            gameState();
+}
 
     
     pChoice.innerText = playerChoice;
